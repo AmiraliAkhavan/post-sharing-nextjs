@@ -40,9 +40,7 @@ main {
   align-items: center;
 }
 
-#main-header img {
-  width: 5rem;
-  height: 5rem;
+#main-header .img {
   filter: drop-shadow(0 0 3px #000);
 }
 
