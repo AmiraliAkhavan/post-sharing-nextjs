@@ -1,6 +1,9 @@
+"use client";
+
 import { redirect } from "next/navigation";
 import { storePost } from "@/lib/posts";
 import FormSubmit from "@/components/formSubmit";
+import { useActionState } from "react";
 
 export default function NewPostPage() {
   async function createPost(formData) {
@@ -8,6 +11,22 @@ export default function NewPostPage() {
     const title = formData.get("title");
     const image = formData.get("image");
     const content = formData.get("content");
+
+    let errors = [];
+
+    if (!title || title.trim().length === 0) {
+      errors.push("title is required");
+    }
+    if (!content || content.trim().length === 0) {
+      errors.push("content is required");
+    }
+    if (!image) {
+      errors.push("image is required");
+    }
+
+    if (errors.length > 0) {
+      return { errors };
+    }
 
     storePost({
       imageUrl: "",
@@ -18,6 +37,8 @@ export default function NewPostPage() {
 
     redirect("/feed");
   }
+
+  const [state, formAction] = useActionState(createPost, {});
 
   return (
     <>
