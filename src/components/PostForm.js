@@ -30,6 +30,7 @@ export default function PostForm({ action }) {
         <p className="form-actions">
           <FormSubmit />
         </p>
+
         {state.errors && (
           <ul className="form-errors">
             {state.errors.map((error) => (
