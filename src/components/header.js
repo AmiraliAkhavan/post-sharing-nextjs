@@ -8,9 +8,9 @@ export default function Header() {
       <Link href="/">
         <Image
           className="img"
-          width={80}
-          height={80}
-          src={logo.src}
+          src={logo}
+          sizes="10vw"
+          priority
           alt="Mobile phone with posts feed on it"
         />
       </Link>
